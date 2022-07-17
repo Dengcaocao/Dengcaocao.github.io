@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>流星雨</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow: hidden;
+            width: 100%;
+            height: 100vh;
+            perspective: 800px;
+            transform-style: preserve-3d;
+            background-color: #000;
+        }
+        .line{
+            position: absolute;
+            width: 200px;
+            height: 3px;
+            margin-left: -100px;
+            border-radius: 3px;
+            background-image: linear-gradient(to right, var(--color), transparent);
+            animation: down 1.5s linear infinite both;
+            transition-delay: calc(var(--d) * 0.3s);
+        }
+        .line::before,
+        .line::after{
+            content: "";
+            position: absolute;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            background-image: inherit;
+        }
+        .line::before{
+            filter: blur(5px);
+        }
+        .line::after{
+            filter: blur(10px);
+        }
+        @keyframes down {
+            0%{
+                transform: translateY(calc(var(--z) * 100px)) translateZ(calc(var(--z) * 10px)) rotate(-60deg) translateX(calc(var(--x) * 100px));
+            }
+            100%{
+                transform: translateY(calc(var(--z) * 100px)) translateZ(calc(var(--z) * 10px)) rotate(-60deg) translateX(-100px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 注意旋转后z、y、z方向会发生改变 -->
+    <div class="container">
+        <div class="line" style="--z:1;--x:6;--d: 1;--color: yellow;"></div>
+        <div class="line" style="--z:2;--x:8;--d: 1.5;--color: red;"></div>
+        <div class="line" style="--z:3;--x:4;--d: 2;--color: green;"></div>
+        <div class="line" style="--z:4;--x:4;--d: 1;--color: yellowgreen;"></div>
+        <div class="line" style="--z:5;--x:6;--d: 0.5;--color: pink;"></div>
+        <div class="line" style="--z:0;--x:3;--d: 0;--color: #fff;"></div>
+        <div class="line" style="--z:6;--x:10;--d: 1.5;--color: blue;"></div>
+        <div class="line" style="--z:7;--x:5;--d: 1;--color: skyblue;"></div>
+        <div class="line" style="--z:8;--x:8;--d: 1;--color: #e056fd;"></div>
+        <div class="line" style="--z:9;--x:6;--d: 0.5;--color: #fff;"></div>
+    </div>
+</body>
+</html>

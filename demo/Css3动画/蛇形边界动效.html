@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蛇形边界动效</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, .8);
+        }
+        .container{
+            overflow: hidden;
+            position: relative;
+            width: 200px;
+            height: 300px;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        .container>.line{
+            position: absolute;
+        }
+        .container>.line:nth-child(1){
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, transparent, red);
+            animation: move1 2s linear infinite;
+        }
+        @keyframes move1 {
+            0%{
+                transform: translateX(-100%);
+            }
+            100%{
+                transform: translateX(100%);
+            }
+        }
+        .container>.line:nth-child(2){
+            top: 0;
+            right: 0;
+            width: 5px;
+            height: 100%;
+            transform: translateY(-100%);
+            background: linear-gradient(to bottom, transparent, red);
+            animation: move2 2s linear infinite;
+            animation-delay: 1s;
+        }
+        @keyframes move2 {
+            0%{
+                transform: translateY(-100%);
+            }
+            100%{
+                transform: translateY(100%);
+            }
+        }
+        .container>.line:nth-child(3){
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 5px;
+            transform: translateX(100%);
+            background: linear-gradient(to left, transparent, red);
+            animation: move3 2s linear infinite;
+        }
+        @keyframes move3 {
+            0%{
+                transform: translateX(100%);
+            }
+            100%{
+                transform: translateX(-100%);
+            }
+        }
+        .container>.line:nth-child(4){
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            transform: translateY(100%);
+            background: linear-gradient(to top, transparent, red);
+            animation: move4 2s linear infinite;
+            animation-delay: 1s;
+        }
+        @keyframes move4 {
+            0%{
+                transform: translateY(100%);
+            }
+            100%{
+                transform: translateY(-100%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        思路：
+            1.定义一个容器，4个项目
+            2.将4个项目分别定义到容器的4个边(容器外)
+            3.使用动画将他们运动起来
+            4.对边相邻的边延迟执行
+     -->
+    <div class="container">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+</body>
+</html>
