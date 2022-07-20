@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	body{
+		margin:0;
+		padding:0;
+		background:#000;
+	}
+	.warp{
+		position:relative;
+		width:200px;
+		height:200px;
+		border-radius:200px;
+		margin:250px 300px;
+		box-shadow:300px 0px 0px -70px #00cc00,
+				   500px 0px 0px -70px #00cc00,
+				   700px 0px 0px -70px #00cc00,
+				   900px 0px 0px -70px #00cc00;
+		animation:moveDD 1s infinite;
+	}
+	.warp:before{
+		position:absolute;
+		top:0;
+		content:"";
+		width:200px;
+		height:100px;
+		border-radius:100px 100px 0 0;
+		transform:rotate(-30deg);
+		background:#ffff00;
+		margin-left:80px;
+		animation:moveTop 1s infinite;
+	}
+	.warp:after{
+		position:absolute;
+		bottom:0;
+		content:"";
+		width:200px;
+		height:100px;
+		border-radius:0 0 100px 100px;
+		transform:rotate(30deg);
+		background:#ffff00;
+		margin-left:80px;
+		animation:moveBottom 1s infinite;
+	}
+	@keyframes moveTop{
+		from{
+			transform:rotate(-30deg);
+		}
+		to{
+			transform:rotate(0deg);
+		}
+	}
+	@keyframes moveBottom{
+		from{
+			transform:rotate(30deg);
+		}
+		to{
+			transform:rotate(0deg);
+		}
+	}
+	@keyframes moveDD{
+		from{
+			box-shadow:300px 0px 0px -70px #00cc00,
+					   500px 0px 0px -70px #00cc00,
+					   700px 0px 0px -70px #00cc00,
+					   900px 0px 0px -70px #00cc00;
+		}
+		to{
+			box-shadow:100px 0px 0px -70px #00cc00,
+					   300px 0px 0px -70px #00cc00,
+					   500px 0px 0px -70px #00cc00,
+					   700px 0px 0px -70px #00cc00;
+		}
+	}
+  </style>
+ </head>
+ <body>
+	<div class="warp">
+		
+	</div>
+ </body>
+</html>

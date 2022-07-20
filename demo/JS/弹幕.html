@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	body{
+		background:#666;
+	}
+	#warp{
+		width:100%;	
+	}
+	.top{
+		width:100%;
+	}
+	.bottom{
+		position:absolute;
+		bottom:0;
+		width:100%;
+		height:80px;
+		line-height:80px;
+		text-align:center;
+		background:#000;
+	}
+	#text{
+		width:30%;
+		height:40%;
+	}
+	#btn{
+		width:5%;
+		height:45%;
+		background:#0C0;
+		border:1px solid #0C0;
+	}
+	.show{
+		width:100%;
+	}
+	.show div{
+		position:absolute;
+	}
+</style>
+</head>
+
+<body>
+	<div id="warp">
+    	<!--<div class="top"></div>-->
+        <div class="bottom">
+        	<input type="text" id="text"/><input type="button" value="发送" id="btn"/>
+        </div>
+        <div class="show">
+        	<div class="show_s">跑起来</div>
+            <div class="show_s">running</div>
+            <div class="show_s">go go go </div>
+        </div>
+    </div>
+    <script>
+	
+			var showList = document.querySelectorAll(".show .show_s"),
+				show = document.querySelector(".show"),
+				btn =document.querySelector("#btn");
+				
+			
+		for(var i = 0;i<showList.length;i++){
+			init(showList[i]);
+		}
+		
+		
+		btn.onclick = function(){
+			
+				var div = document.createElement("div");
+				div.className = "show_s";
+				var text = document.querySelector("#text").value;
+				var text1 = document.createTextNode(text);
+				div.appendChild(text1);
+				var show = document.getElementsByClassName("show")[0];
+				show.appendChild(div);
+			
+			
+				init(div);
+				
+			
+		}
+		
+		function init(obj){
+			var screenHeight = document.documentElement.clientHeight,
+				screenWidth = document.documentElement.clientWidth,
+				
+				bottomHeight = document.getElementsByClassName("bottom")[0].clientHeight,
+				topHeight = (screenHeight - bottomHeight) - obj.offsetHeight,
+				randomHeight = Math.random()*topHeight;
+				obj.style.top = randomHeight + "px";
+				obj.style.color = randomColor();
+				
+				var show_sWidth = obj.offsetWidth,
+					leftWidth = (screenWidth - show_sWidth);
+					obj.style.left = leftWidth + "px";
+					
+				move(obj,leftWidth)
+					
+				console.log(show_sWidth);
+		}
+		
+		//运动
+		function move(obj,leftWidth){
+			leftWidth -= 4;
+			obj.style.left = leftWidth + "px";
+			requestAnimationFrame(function(){
+				move(obj,leftWidth)
+			});
+			
+			if(leftWidth < -obj.offsetWidth){
+				
+				show.removeChild(obj);
+				return;
+				console.log("dw");
+			}
+				/*for(var i = showList.length-1;i>=0;i--){
+					if(leftWidth < -40){
+						var show = document.querySelector(".show"),
+							show_list = show.childNodes;
+							show.removeChild(show_list[i]);
+
+				}
+			}*/
+		}
+		
+		//随机颜色
+		function randomColor(){
+			return "#" + Math.random().toString(16).slice(-6);
+		}
+    </script>
+</body>
+</html>

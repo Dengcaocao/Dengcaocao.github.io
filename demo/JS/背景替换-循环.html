@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>背景替换-循环</title>
+  <style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	.warp{
+		width:100%;
+	}
+	.phone{
+		width:300px;
+		height:500px;
+		margin: 0 auto;
+		background:url(image/1.jpg);
+		background-size:cover;
+		background-position:center;
+	}
+	.choose{
+		display:flex;
+		justify-content:space-around;
+		align-items:center;
+		width:600px;
+		height:60px;
+		margin:50px auto;
+		background:rgb(195, 184, 184);
+	}
+	.img_list{
+		width:50px;
+		height:50px;
+	}
+	.img_list:nth-child(1){
+		background:url(image/1.jpg);
+		background-size:cover;
+		background-position:center;
+	}
+	.img_list:nth-child(2){
+		background:url(image/2.jpg);
+		background-size:cover;
+		background-position:center;
+	}
+	.img_list:nth-child(3){
+		background:url(image/3.jpg);
+		background-size:cover;
+		background-position:center;
+	}
+	.img_list:nth-child(4){
+		background:url(image/4.jpg);
+		background-size:cover;
+		background-position:center;
+	}
+	.img_list:nth-child(5){
+		background:url(image/5.jpg);
+		background-size:cover;
+		background-position:center;
+	}
+	.img_list:nth-child(6){
+		background:url(image/6.jpg);
+		background-size:cover;
+		background-position:center;
+	}
+	.img_list:nth-child(7){
+		background:url(image/7.jpg);
+		background-size:cover;
+		background-position:center;
+	}
+  </style>
+ </head>
+ <body>
+	<div class="warp">
+		<div class="phone"></div>
+		<div class="choose">
+			<div class="img_list"></div>
+			<div class="img_list"></div>
+			<div class="img_list"></div>
+			<div class="img_list"></div>
+			<div class="img_list"></div>
+			<div class="img_list"></div>
+			<div class="img_list"></div>
+		</div>
+	</div>
+	<script>
+		var oImg = document.getElementsByClassName("img_list"),
+			phone = document.getElementsByClassName("phone");
+		for(var i = 0;i<oImg.length;i++){
+
+			oImg[i].index = i;
+
+			oImg[i].onclick = function(){
+				var j = this.index;
+				phone[0].style.background = "url(image/"+(j+1)+".jpg)";
+				phone[0].style.backgroundSize = "cover";
+				phone[0].style.backgroundPosition = "center";
+			}
+		}
+	</script>
+ </body>
+</html>

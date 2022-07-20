@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>鼠标跟随</title>
+  <style>
+	body{
+		margin:0;
+		padding:0;
+	}
+	#canvas{
+		background:#000;
+	}
+  </style>
+ </head>
+ <body>
+	<canvas id="canvas"></canvas>
+
+	<script>
+		var canvas = document.querySelector("#canvas")
+		ctx = canvas.getContext("2d")
+		//当窗口发生改变时执行
+		init()
+		window.onresize = init
+		function init(){
+			canvas.width = window.innerWidth
+			canvas.height = window.innerHeight
+		}
+
+		//监听鼠标移动事件
+		var data = []
+
+		//随机颜色
+		function color(){
+			return "#" + Math.random().toString(16).slice(-6)
+		}
+		document.addEventListener("mousemove",function(e){
+			data.push({
+				x:e.clientX,
+				y:e.clientY,
+				color:color(),
+				vx:(Math.random()-0.5)*2.5,
+				vy:(Math.random()-0.5)*2.5,
+				opacity:1
+			})
+			
+			draw()
+		})
+
+		function draw(){
+			ctx.clearRect(0,0,canvas.width,canvas.height)
+			for(var i = 0 ;i < data.length;i++){
+				if(data[i].opacity < 0.05){
+					data.splice(i,1)
+					return
+				}
+				data[i].x += data[i].vx
+				data[i].y += data[i].vy
+				data[i].opacity *= 0.98
+				ctx.beginPath()//开始画画
+				ctx.fillStyle = data[i].color
+				ctx.globalAlpha = data[i].opacity
+				ctx.arc(data[i].x,data[i].y,45,0,Math.PI*2,true)
+				ctx.closePath()
+				ctx.fill()
+
+			}
+			requestAnimationFrame(draw)
+		}
+	</script>
+ </body>
+</html>
