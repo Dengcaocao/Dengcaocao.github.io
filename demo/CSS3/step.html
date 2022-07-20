@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>css3-step</title>
+  <link rel="shortcut icon" href="images/favicon.ico"/><!-- 引入图标 -->
+  <style>
+	body{
+		background-image:url(images/bac.webp);
+		background-repeat:no-repeat;
+	}
+	.person{
+		position:absolute;
+		top:0;
+		left:0;
+		right:0;
+		bottom:0;
+		margin:auto;
+		display:flex;
+		align-items:flex-end;/*底部对齐*/
+		justify-content:center;
+		width:800px;
+		height:300px;
+	}
+	.person .bg{
+		width:180px;
+		height:180px;
+	}
+	.bg:nth-child(1){
+		background-image:url(images/west_01.png);
+		animation:oneMove 1.4s steps(8) infinite;
+	}
+	.bg:nth-child(2){
+		background-image:url(images/west_02.png);
+		animation:twoMove 1.4s steps(8) infinite;
+	}
+	.bg:nth-child(3){
+		background-image:url(images/west_03.png);
+		animation:threeMove 1.4s steps(8) infinite;
+	}
+	.bg:nth-child(4){
+		background-image:url(images/west_04.png);
+		animation:fourMove 1.4s steps(8) infinite;
+	}
+	@keyframes oneMove{
+		from{
+			background-position-x:0px;
+		}
+		to{
+			background-position-x:-1600px;
+		}
+	}
+	@keyframes twoMove{
+		from{
+			background-position-x:0px;
+		}
+		to{
+			background-position-x:-1600px;
+		}
+	}
+	@keyframes threeMove{
+		from{
+			background-position-x:0px;
+		}
+		to{
+			background-position-x:-1360px;
+		}
+	}
+	@keyframes fourMove{
+		from{
+			background-position-x:0px;
+		}
+		to{
+			background-position-x:-1680px;
+		}
+	}
+  </style>
+ </head>
+ <body>
+	<div class="person">
+		<div class="bg"></div>
+		<div class="bg"></div>
+		<div class="bg"></div>
+		<div class="bg"></div>
+	<div>
+ </body>
+</html>

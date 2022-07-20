@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>css3-滤镜</title>
+  <style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	body{
+		background:#000;
+	}
+	.warp{
+		display:flex;
+		align-items:center;
+		justify-content:space-around;
+		width:500px;
+		height:500px;
+		background:#000;
+		margin:0 auto;
+		-webkit-filter:blur(10px) contrast(20);
+	}
+	.circle{
+		width:96px;
+		height:96px;
+		border-radius:96px;
+		background:#fff;
+	}
+	.circle:nth-child(2){
+		animation:dw 1s infinite alternate;
+	}
+	@keyframes dw{
+		from{
+			box-shadow:350px 0px 0px #fff;
+		}
+
+		to{
+			box-shadow:-350px 0px 0px #fff;
+		}
+	}
+  </style>
+ </head>
+ <body>
+  <div class="warp">
+		<div class="circle"></div>
+		<div class="circle"></div>
+		<div class="circle"></div>
+  </div>
+ </body>
+</html>
