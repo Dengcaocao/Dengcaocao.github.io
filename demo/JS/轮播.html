@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	.bg_warp{
+		position: relative;
+		width:330px;
+		height: 188px;
+		margin: 0 auto;
+	}
+	.bg_warp img{
+		position:absolute;
+		top:0;
+		left: 0;
+		opacity:0;
+	}
+	.bg_warp .off{
+		opacity:0;
+	}
+	.bg_warp .on {
+		opacity: 1;
+	}
+	/* 轮播er */
+	.warp{
+		position:relative;
+		margin-top: 25px;
+		left:50%;
+		transform: translateX(-50%);
+		width:330px;
+		height:188px;
+		overflow:hidden;
+	}
+	.img_box{
+		position:absolute;
+		left:0%;
+		width:300%;
+		height:100%;
+		transition:1s;
+	}
+	.img{
+		width:33.3%;
+		height:100%;
+		float:left;
+	}
+	.list{
+		position:absolute;
+		bottom:0;
+		left:50%;
+		width:80px;
+		margin-left:-40px;
+    }
+	.list div{
+		width:10px;
+		height:10px;
+		background:rgba(0,0,0,.5);
+		border-radius:50%;
+		float:left;
+		margin:5px 5px;
+	}
+	.list .bg{
+		background:#0000ff;
+	}
+	/* 轮播三 */
+.banner {
+	position: relative;
+	width:330px;
+	height:188px;
+	margin: 20px auto;
+}
+.img-box{
+	position:relative;
+	width:330px;
+	height:188px;
+	border:1px solid #00ff00;
+ }
+ .img-box img{
+	position:absolute;
+	width: 100%;
+	height: 100%;
+	opacity:0;
+ }
+ .img-box img.on{
+ 	opacity:1;
+ }
+ .left{
+	position:absolute;
+	top:50%;
+	left:0;
+	width:49px;
+	height:49px;
+	line-height: 49px;
+	background:rgba(0,0,0,.5);
+	text-align:center;
+	color:white;
+ }
+ .right{
+	position:absolute;
+	top:50%;
+	right:0;
+	width:49px;
+	height:49px;
+	line-height: 49px;
+	background:rgba(0,0,0,.5);
+	text-align:center;
+	color:white;
+ }
+ .tab{
+	position:absolute;
+	bottom: 10px;
+	left: 50%;
+	transform: translateX(-50%);
+ }
+ .tab li{
+	list-style:none;
+	width:10px;
+	height:10px;
+	border-radius:50%;
+	float:left;
+	margin-right:10px;
+	background:#ccc;
+ }
+ .tab li.on{
+ 	background:#ffff00;
+ }
+  </style>
+ </head>
+ <body>
+	<!-- 轮播一 -->
+	<div class="bg_warp">
+		<img src="image/l3.jpg" width="100%" height="100%"/>
+		<img src="image/l2.jpg" width="100%" height="100%"/>
+		<img src="image/l4.jpg" width="100%" height="100%"/>
+	</div>
+	<!-- 轮播二 -->
+	<div class="warp">
+		<div class="img_box">
+			<div class="img" style="background:url(image/l2.jpg) center/100% 100% no-repeat;"></div>
+			<div class="img" style="background:url(image/l3.jpg) center/100% 100% no-repeat;"></div>
+			<div class="img" style="background:url(image/l4.jpg) center/100% 100% no-repeat;"></div>
+		</div>
+
+		<div class="list">
+			<div class="bg"></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+	<!-- 轮播三 -->
+	<div class="banner">
+		<div class="img-box">
+			<img class="on" src="image/l2.jpg"/>
+			<img src="image/l3.jpg"/>
+			<img src="image/l4.jpg"/>
+			<div class="left"> < </div>
+			<div class="right"> > </div>
+		</div>
+		<div class="tab">
+			<ul>
+				<li class="on"></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+	</div>
+	<script>
+		// 轮播一
+		var oImg = document.querySelectorAll(".bg_warp img")
+		var index = 0,lastIndex = 0;
+
+		function bg(){
+			oImg[lastIndex].className = "off";
+			index %= oImg.length
+			oImg[index].className = "on";
+			lastIndex = index;
+			index ++
+		}
+		bg()
+		setInterval(bg,3000);
+
+		// 重力加速的效果
+		function dw(){
+
+			num--;
+			
+			var endTop = num*100+60
+
+			var speed = 0;
+			
+			if(num <= 0){
+				clearInterval(endT);
+				clearInterval(outTime);
+			}
+			outTime = setInterval(function(){
+				var star = oMove[num].offsetTop,
+					shift = star + speed;
+					speed += 10;
+
+				if(shift >= endTop){
+					shift = endTop;
+					speed *= -1;
+					speed *= 0.4;
+				}
+				oMove[num].style.top = shift + "px";
+			},20);
+
+			setTimeout(function(){
+				clearInterval(outTime);
+			},900);
+		}
+
+		// 轮播二
+		var oList = document.querySelectorAll(".list div"),
+			oImg_box = document.querySelector(".img_box");
+
+		for(var i = 0; i < oList.length; i++){
+
+			oList[i].index = i;
+
+			oList[i].onclick = function(){
+
+				// 移除所有的bg
+				for(var j = 0; j < oList.length; j++){
+					oList[j].classList.remove("bg");
+				}
+
+				this.classList.add("bg");
+
+				oImg_box.style.left = this.index *(-100) + "%";
+			}
+			
+		}
+		// 轮播三
+		(function () {
+			var oRight = document.querySelector('.right'),
+				oLeft = document.querySelector('.left'),
+				oImg = document.querySelectorAll('.img-box img'),
+				aTab = document.querySelectorAll('.tab li');
+			  
+			var index = 0,lastIndex=0;//上，下 下标
+			oRight.onclick = function(){
+										
+				oImg[lastIndex].className = '';
+				aTab[lastIndex].className = '';
+
+				index++;
+							
+				index %= oImg.length;  //取余
+
+				oImg[index].className = 'on';
+				aTab[index].className = 'on';
+
+				lastIndex = index;
+					
+			}
+			oLeft.onclick = function(){
+				oImg[lastIndex].className = '';
+				aTab[lastIndex].className = '';
+
+				index--;
+				
+				if(index < 0){
+					index = oImg.length-1;
+				}
+				oImg[index].className = 'on';
+				aTab[index].className = 'on';
+
+				lastIndex = index;
+			}
+		})()
+	</script>
+ </body>
+</html>
