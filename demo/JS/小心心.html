@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>canvas-点击比心哦</title>
+  <link type="text/css" rel="stylesheet" href="https://at.alicdn.com/t/font_1341865_k4lkll83yo.css"/>
+  <style>
+	.loc{
+		position:absolute;
+	}
+	body {
+		background-color: #000;
+	}
+  </style>
+ </head>
+ <body>
+	<script>
+		var data = [];
+		document.onclick = function (e) {
+			var xin_div = document.createElement("div");
+			xin_div.className = "loc";
+			xin_div.innerHTML = '<i class="iconfont icon-xin"></i>';
+			document.body.appendChild(xin_div);
+
+			data.push({
+				warp: xin_div,
+				left: e.clientX,
+				top: e.clientY,
+				scale: 1,
+				opacity: 1,
+				color:"rgb("+Math.random()*255+","+Math.random()*255+","+Math.random()*255+")"
+			});
+				
+			move();
+		}
+
+		function move () {
+			for (var i = 0;i<data.length;i++) {
+				if (data[i].opacity <= 0) {
+					document.body.removeChild(data[i].warp);
+					data.splice(i,1);
+					return;
+				}
+
+				data[i].top--;
+				data[i].scale += 0.01;
+				data[i].opacity -= 0.01;
+				data[i].warp.style.cssText = 'top:'+data[i].top+'px;'+
+												'left:'+data[i].left+'px;'+
+												'color:'+data[i].color+';'+
+												'transform:scale('+data[i].scale+');'+
+												'opacity:'+data[i].opacity+';';
+			}
+
+			requestAnimationFrame(move);
+		}
+	</script>
+ </body>
+</html>
