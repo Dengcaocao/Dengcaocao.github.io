@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	body{
+		background-image:url("images/01.jpg");
+		background-repeat:no-repeat;
+		background-size:cover;
+		overflow: hidden;
+	}
+	.warp{
+		position:relative;
+		width:418px;
+		height:418px;
+		margin: 150px auto;
+		animation:10s move infinite linear;
+		background-image: url(images/fsw.png);
+		background-size: cover;
+	}
+	@keyframes move{
+		from{
+			transform:rotate(0deg);
+		}
+		to{
+			transform:rotate(360deg);
+		}
+	}
+	.warp>img:nth-child(1){
+		position:absolute;
+		top: 0%;
+		left: 0;
+		transform-origin: center;
+		animation:10s boy infinite linear;
+	}
+	.warp>img:nth-child(2){
+		position:absolute;
+		top: 25%;
+		right: 0;
+		transform: translate(50%);
+		transform-origin: right center;
+		animation:10s girl infinite linear;
+	}
+	.warp>img:nth-child(3){
+		position:absolute;
+		left: 50%;
+		bottom: 0;
+		transform: translate(-50%, 50%);
+		transform-origin: left bottom;
+		animation:10s shamegirl infinite linear;
+	}
+	@keyframes boy{
+		from{
+			transform:rotate(0deg);
+		}
+		to{
+			transform:rotate(-360deg);
+		}
+	}
+	@keyframes girl{
+		from{
+			transform:rotate(0deg) translate(50%);
+		}
+		to{
+			transform:rotate(-360deg) translate(50%);
+		}
+	}
+	@keyframes shamegirl{
+		from{
+			transform:rotate(0deg) translate(-50%, 50%);
+		}
+		to{
+			transform:rotate(-360deg) translate(-50%, 50%);
+		}
+	}
+  </style>
+ </head>
+ <body>
+	<div class="warp">
+		<img src="images/boy.png">
+		<img src="images/girl.png">
+		<img src="images/shamegirl.png">
+	</div>
+ </body>
+</html>
