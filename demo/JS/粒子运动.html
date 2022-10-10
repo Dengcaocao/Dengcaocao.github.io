@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="Generator" content="EditPlus®">
+<meta name="Author" content="">
+<meta name="Keywords" content="">
+<meta name="Description" content="">
+<title>canvas-粒子运动</title>
+</head>
+<style>
+	body{
+		margin:0;
+	}
+	#canvas{
+		display:block;
+		margin:0 auto;
+		background:#000;
+	}
+</style>
+<body>
+	<canvas id="canvas" width="500" height="500"></canvas>
+	<script>
+		var num = 200;
+		var cxt = document.getElementById('canvas'); //操作对象
+		var cxt1 = cxt.getContext('2d');
+		var W,H;
+		var data = [];//存储粒子的属性数据
+
+		//初始化画布大小，生成粒子数据
+		init();
+		function init(){
+			W = canvas.width = window.innerWidth;
+			H = canvas.height = window.innerHeight;
+
+			for(var i = 0;i<num;i++){
+				data[i] = {
+					x:	Math.random() * W,
+					y:	Math.random() * H,
+					xx:	Math.random() * W * 0.0006,
+					yy:	Math.random() * H * 0.0006
+				}
+				createArc(data[i].x,data[i].y);
+			}	
+		}
+		
+		//创建粒子
+		function createArc (x, y){
+			cxt1.save();//保存路径（内存）
+			cxt1.beginPath();//开始路径
+			cxt1.fillStyle = 'skyblue'; //画笔颜色
+			cxt1.arc(x, y, 3, 0, Math.PI*2, false);// 圆的属性：圆心坐标 半径 弧度 顺/逆
+			cxt1.closePath();//闭合路径
+			cxt1.fill();//绘画
+			cxt1.restore();
+		}
+
+		//创建线条
+		function createLine (x1, y1, x2, y2){
+			cxt1.save();
+			var lin = cxt1.createLinearGradient(x1,y1,x2,y2);//创建一条线性颜色渐变;
+			lin.addColorStop(0,'red');
+			lin.addColorStop(1,'blue');
+			cxt1.linWidth = 1.5;//线宽
+			cxt1.strokeStyle = lin;
+			cxt1.beginPath();
+
+			//连线
+			cxt1.moveTo(x1,y1);
+			cxt1.closePath();
+			cxt1.lineTo(x2,y2);
+			cxt1.stroke();
+			cxt1.restore();
+		}
+		 
+
+		 //粒子运动
+		 function drowPath(){
+			cxt1.clearRect(0, 0, W, H);//清除之前的圆
+			for (var i = 0; i < num; i++) {
+				data[i].x += data[i].xx;
+				data[i].y += data[i].yy;
+				//边界值检查
+				if (data[i].x < 0 || data[i].x > W) data[i].xx = - data[i].xx;
+				if (data[i].y < 0 || data[i].y > H) data[i].yy = - data[i].yy
+
+				createArc(data[i].x,data[i].y);
+				//利用勾股定理判断是否可以连线
+				for (var j = i + 1; j < num; j++){//下一个点/下下一个点
+					if (Math.pow(data[i].x - data[j].x, 2) + Math.pow(data[i].y - data[j].y, 2) < 10 * 10){
+						createLine(data[i].x, data[i].y, data[j].x, data[j].x);//可以连线
+					}
+				}
+			}
+		}
+
+
+		setInterval(function(){
+			drowPath();
+		},1000/60)
+	 </script>
+ </body>
+</html>

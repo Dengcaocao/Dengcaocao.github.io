@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	html,body{
+		overflow:hidden;
+	}
+	*{
+		margin:0;
+		padding:0;
+	}
+	#canvas{
+		position:relative;
+		background-color:#ffcc99;
+	}
+	#form{
+		display:flex;
+		flex-direction:column;
+		align-items:center;
+		justify-content:center;
+		position:absolute;
+		top:0;
+		left:0;
+		right:0;
+		bottom:0;
+		margin:auto;
+		width:300px;
+		height:200px;
+		background-color:rgba(0,0,0,.5);
+	}
+	#form h2{
+		margin-left:-140px;
+		margin-bottom:20px;
+		color:#ff3300;
+	}
+	#form input{
+		width:160px;
+		height:25px;
+		border:none;
+		background-color:rgba(255,255,255,.8);
+	}
+	#form input[type="submit"]{
+		width:60px;
+		height:30px;
+		background-color:#ff9900;
+	}
+	#form p{
+		margin-bottom:20px;
+		color:#ff3300;
+	}
+  </style>
+ </head>
+ <body>
+	<canvas id="canvas"></canvas>
+	<script>
+		var canvas = document.querySelector("#canvas"),
+			cxt = canvas.getContext("2d"),
+			width = innerWidth,
+			height = innerHeight;
+		canvas.width = innerWidth;
+		canvas.height = innerHeight;
+
+		var num = Math.round(Math.random() * 14 + 6);
+
+		var data = [];
+
+		for(var i = 0; i < num ;i++){
+			data.push({
+				x:Math.random()*width,
+				y:Math.random()*height,
+				mx:Math.random(),
+				my:Math.random(),
+				color:randomColor(),
+				r:Math.random()*25+25
+			});
+			move();
+		}
+		function move(){
+			cxt.clearRect(0,0,canvas.width,canvas.height);
+			for(var i = 0; i < data.length;i++){
+				data[i].x += data[i].mx;
+				data[i].y += data[i].my;
+				if(data[i].x > width){
+					data[i].mx = -data[i].mx
+				}
+				if(data[i].x < 0){
+					data[i].mx = -data[i].mx
+				}
+				if(data[i].y > height){
+					data[i].my = -data[i].my
+				}
+				if(data[i].y < 0){
+					data[i].my = -data[i].my
+				}
+				cxt.beginPath();
+				cxt.fillStyle = data[i].color;
+				cxt.arc(data[i].x,data[i].y,data[i].r,0,Math.PI*2,true);
+				cxt.closePath();
+				cxt.fill();
+			}
+			requestAnimationFrame(move);
+		}
+
+		//随机颜色
+		function randomColor(){
+			return "#" + Math.random().toString(16).slice(-6);
+		}
+		
+	</script>
+ </body>
+</html>
