@@ -1,0 +1,1 @@
+import{ab as t,A as a,B as r,z as e,M as s}from"./framework.43ef2d2f.js";const o={},c=e("h2",{id:"哈哈哈哈",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#哈哈哈哈","aria-hidden":"true"},"#"),s(" 哈哈哈哈")],-1),n=[c];function _(d,i){return a(),r("div",null,n)}const l=t(o,[["render",_],["__file","senior.html.vue"]]);export{l as default};
