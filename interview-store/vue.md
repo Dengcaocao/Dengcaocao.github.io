@@ -111,6 +111,49 @@
 主要解决浏览器性能的问题。当视图更新后台，虚拟DOM不会立即更新，而是将它记录在一个js
 对象中，最后将这个对象一次性的添加到DOM树中，避免了大量重复的DOM操作。
 
-## vuex
 ## 路由模式
-## 路由钩子函数
+
+- hash模式
+
+  在地址栏中会有一个`#`，可用`location.hash`获取hash值。
+  当hash值改变时不会触发http请求，不会重新加载页面。
+
+- history模式
+
+  利用H5的`history`API。通过`pushState、replaceState`方法向当前浏览器会话的历史堆栈中添加或替换一个状态，
+  不会触发`popstate`事件，只有在做出浏览器动作(go、back、forward)时，才会触发该事件。
+
+## 路由钩子
+
+路由钩子分为：
+1. 全局守卫
+
+  - beforeEach：进入路由之前。可进行用户身份的校验。
+  - afterEach：进入路由之后
+
+2. 路由独享守卫(beforeEnter)
+
+3. 组件内守卫
+
+  - beforeRouteEnter：路由进入前
+  - beforeRouteUpdate：路由更新
+  - beforeRouteLeave：路由离开
+
+
+## vuex
+
+vuex是一种状态管理模式，用于集中式状态管理、数据共享的仓库。
+
+state：定义数据状态
+
+getters：获取state中的数据，会进行缓存，变化时会重新计算。
+
+mutations：修改state中的数据唯一方法是提交(`commit`) mutation，必须是同步函数。
+
+actions：主要用来处理一些异步操作，通过`dispatch`来分发任务提交`mutations`，不能直接变更状态。
+
+module：
+
+  将store分成多个模块，每个模块都拥有自己的state、getters、mutations、actions。
+
+  通过`namespaced:true`开启命名空间，提交分发时带上命名空间名称。避免多个模块对同一个mutation 或 action 作出响应。
