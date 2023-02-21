@@ -70,7 +70,7 @@
 3. 销毁 `beforeDestroy、destroyed`
 
 | 2.x | 3.x | 描述 | 用途 |
-| :--- | :--- | :--- |
+| :--- | :--- | :--- | :--- |
 | beforeCreate | setup | 实例创建前 | loading的加载、插件的挂载... |
 | created | setup | 实例创建完成 | 发送ajax请求... |
 | beforeMount | onBeforeMount | 实例挂载前 | |
