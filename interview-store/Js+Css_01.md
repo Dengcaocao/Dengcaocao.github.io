@@ -370,6 +370,12 @@ let、const变量也进行了提升，但只能在初始化时才能访问，在
   arr.filter((item, index) => arr.indexOf(item) === index)
 ```
 
+## for...in和for...of的区别
+
+`for...in`用于可枚举(`enumerable`)类型的数据(对象，数组，字符串)，遍历的是key，遍历类数组(dom节点列表...)时会遍历到原型中去。
+
+`for...of`用于可迭代(`iterator`)类型的数据(数组，字符串)，遍历的是value。
+
 ## typeof 和 instanceof 的区别
 
 两者都是判断数据类型的方法。
@@ -429,7 +435,7 @@ Object.prototype.toString.call(obj).toLowerCase().slice(8, -1)
 
 ## cookies、sessionStorage、localStorage的区别
 
-`cookies`是网站标记用户身份的一段加密的数据
+`cookies`是网站标记用户身份的一段加密的数据，最大4k，最多20个。
 
 `sessionStorage`浏览器本地存储的一种方式，以键值对的形式进行存储，在浏览器关闭时会自动删除
 
