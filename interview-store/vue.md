@@ -93,6 +93,8 @@
 
 ## 组件间的通信方式
 
+![](/assets/img/interview/tx.image)
+
 父向子
 > props、$refs、$attrs(所以未被props定义的属性)
 

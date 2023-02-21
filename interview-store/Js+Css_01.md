@@ -178,8 +178,11 @@ em、rem是一个相对单位。em相对于当前元素的字体大小，rem相�
 ## 首屏加载的优化方案
 
 1. 使用路由懒加载
+
 2. Vue 异步组件
+
 3. Webpack开启gzip压缩
+
 4. 使用link标签的rel属性设置 prefetch
 
 ## JS数据类型
