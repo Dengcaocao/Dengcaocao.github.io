@@ -61,18 +61,26 @@
 
 ## vue的生命周期
 
-实例从创建到销毁的一个过程。大体分为挂载、更新、销毁三个阶段。
+实例从创建到销毁的一个过程(数据观测、模版编译、实例挂载、DOM更新)。Vue3 中的生命周期比 Vue2 的快。
 
-|周期钩子|描述|用途|
-|:---|:---|:---|
-|beforeCreate|实例创建前|loading的加载...|
-|created|实例创建后|发送ajax请求...|
-|beforeMount|实例挂载前||
-|mounted|实例挂载后|当前阶段可获取到DOM节点，也可用于发送ajax请求|
-|beforeUpdate|数据更新前||
-|updated|数据更新后||
-|beforeDestroy|销毁之前|此阶段可用于清除定时器、事件监听...|
-|destroyed|销毁完成||
+大体分为以下三个阶段。
+
+1. 挂载 `beforeCreate、created、beforeMount、mounted`
+
+2. 更新 `beforeUpdate、updated`
+
+3. 销毁 `beforeDestroy、destroyed`
+
+| 2.x | 3.x | 描述 | 用途 |
+| :--- | :--- | :--- |
+| beforeCreate | setup | 实例创建前 | loading的加载、插件的挂载... |
+| created | setup | 实例创建完成 | 发送ajax请求... |
+| beforeMount | onBeforeMount | 实例挂载前 | |
+| mounted | onMounted | 实例挂载后 | 可获取DOM节点、发送ajax请求 |
+| beforeUpdate | onBeforeUpdate | 数据更新前 | 获取更新前各种状态 |
+| updated | onUpdated | 数据更新后 | |
+| beforeDestroy | onBeforeUnmount | 销毁之前 | 定时器的清除、移除事件监听... |
+| destroyed | onUnmounted | 销毁完成 | 移除事件监听 |
 
 ## 父子组件的挂载顺序
 
@@ -88,13 +96,16 @@
 ## 组件间的通信方式
 
 父向子
-> props、$refs
+> props、$refs、$attrs(所以未被props定义的属性)
 
 子向父
 > $emit、$parent
 
 兄弟组件
-> vuex
+> vuex、$parent、
+
+跨层级(祖孙组件)
+> vuex、provide+inject
 
 ## key的作用及不建议使用index
 
