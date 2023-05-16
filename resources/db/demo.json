@@ -2,48 +2,80 @@
   "code": 200,
   "data": [
     {
-      "type": "CSS3动画",
+      "uuid": "3e5b47f5-dc69-44ad-8277-8d7690691ef6",
+      "name": "Css动画",
       "data": [
         {
-          "title": "蛇形边界",
-          "description": "这真tm好看呀",
-          "samllImage": "https://img1.baidu.com/it/u=3363566985,99735131&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500",
-          "link": "https://dengcaocao.github.io/demo/CSS3/hover.html"
+          "created_at": "2023-05-16 14:22:52",
+          "link": "https://dengcaocao.github.io/demo/CSS3/scale.html",
+          "title": "缩放",
+          "description": "缩放",
+          "pic": "logo512.png",
+          "type": "3e5b47f5-dc69-44ad-8277-8d7690691ef6",
+          "status": "online",
+          "uuid": "bddb25b4-705d-4a6c-9a59-f2cf0addac87",
+          "content": "<p>demo描述</p>"
         },
         {
-          "title": "蛇形边界",
-          "description": "这真tm好看呀",
-          "samllImage": "https://img1.baidu.com/it/u=3363566985,99735131&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500",
-          "link": "https://dengcaocao.github.io/demo/CSS3/css3滤镜.html"
+          "created_at": "2023-05-16 14:17:51",
+          "link": "https://dengcaocao.github.io/demo/CSS3/3D相册.html",
+          "title": "3D相册",
+          "description": "3D相册",
+          "pic": "https://dengcaocao.github.io/resources/images/pull-shark-default.png",
+          "type": "3e5b47f5-dc69-44ad-8277-8d7690691ef6",
+          "status": "online",
+          "uuid": "1fa00439-61ab-4617-86b3-539aa38f4698",
+          "content": "<p>demo描述</p>"
         },
         {
-          "title": "蛇形边界",
-          "description": "这真tm好看呀",
-          "samllImage": "https://img1.baidu.com/it/u=3363566985,99735131&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500",
-          "link": "https://dengcaocao.github.io/demo/CSS3/step.html"
+          "created_at": "2023-05-16 14:33:50",
+          "title": "step动画",
+          "description": "step动画",
+          "pic": "https://dengcaocao.github.io/resources/images/pull-shark-default.png",
+          "type": "3e5b47f5-dc69-44ad-8277-8d7690691ef6",
+          "link": "https://dengcaocao.github.io/demo/CSS3/step.html",
+          "status": "online",
+          "uuid": "d47d53bb-53f2-41a8-8b6c-82514122a49e",
+          "content": "<p>dmeo描述</p>"
         },
         {
-          "title": "蛇形边界",
-          "description": "这真tm好看呀",
-          "samllImage": "https://img1.baidu.com/it/u=3363566985,99735131&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500",
-          "link": "https://dengcaocao.github.io/demo/CSS3/3D相册.html"
+          "created_at": "2023-05-16 14:45:49",
+          "title": "滤镜",
+          "description": "滤镜",
+          "pic": "https://dengcaocao.github.io/resources/images/pull-shark-default.png",
+          "type": "3e5b47f5-dc69-44ad-8277-8d7690691ef6",
+          "link": "https://dengcaocao.github.io/demo/CSS3/css3滤镜.html",
+          "status": "online",
+          "uuid": "72de8315-5169-4c03-9bc0-b368db8c0c83",
+          "content": "<p>demo描述</p>"
         },
         {
+          "created_at": "2023-05-16 14:17:47",
           "title": "蛇形边界",
-          "description": "这真tm好看呀",
-          "samllImage": "https://img1.baidu.com/it/u=3363566985,99735131&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500",
-          "link": "https://dengcaocao.github.io/demo/CSS3/scale.html"
+          "description": "蛇形边界",
+          "pic": "https://dengcaocao.github.io/resources/images/pull-shark-default.png",
+          "type": "3e5b47f5-dc69-44ad-8277-8d7690691ef6",
+          "link": "https://dengcaocao.github.io/demo/CSS3/hover.html",
+          "status": "online",
+          "uuid": "690ed97a-bb96-4d81-94d0-2e9c06789155",
+          "content": "<p>demo描述</p>"
         }
       ]
     },
     {
-      "type": "JavaScript动画",
+      "uuid": "6a125eb0-3ec5-4bc9-b2b1-cea4d97eac20",
+      "name": "javaScript动画",
       "data": [
         {
+          "created_at": "2023-05-16 14:49:52",
+          "link": "https://dengcaocao.github.io/demo/JS/",
           "title": "小心心",
-          "description": "给你我的爱❤️",
-          "samllImage": "https://img1.baidu.com/it/u=3363566985,99735131&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500",
-          "link": "https://dengcaocao.github.io/demo/JS/"
+          "description": "下心心",
+          "pic": "https://dengcaocao.github.io/resources/images/pull-shark-default.png",
+          "type": "6a125eb0-3ec5-4bc9-b2b1-cea4d97eac20",
+          "status": "online",
+          "uuid": "f181d2a3-423b-45c7-b754-4dc41380b940",
+          "content": "<p>demo描述</p>"
         }
       ]
     }
