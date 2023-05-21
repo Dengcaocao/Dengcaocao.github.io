@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>parallax</title>
+    <script src="js/parallax.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            background-image: url('/resources/images/background.jpg');
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="layer" data-depth="0.8"><img src="/resources/images/earth.png" alt=""></div>
+        <div class="layer" data-depth="0.7"><img src="/resources/images/man.png" alt=""></div>
+        <div class="layer" data-depth="0.6"><img src="/resources/images/planet1.png" alt=""></div>
+        <div class="layer" data-depth="0.5"><img src="/resources/images/planet2.png" alt=""></div>
+        <div class="layer" data-depth="0.4"><img src="/resources/images/planet3.png" alt=""></div>
+        <div class="layer" data-depth="0.3"><img src="/resources/images/planet4.png" alt=""></div>
+        <div class="layer" data-depth="0.2"><img src="/resources/images/planet5.png" alt=""></div>
+        <div class="layer" data-depth="0.1"><img src="/resources/images/text.png" alt=""></div>
+    </div>
+    <script>
+        const container = document.querySelector('.container')
+        new Parallax(container)
+    </script>
+</body>
+</html>

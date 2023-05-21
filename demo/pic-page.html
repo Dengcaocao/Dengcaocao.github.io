@@ -29,19 +29,19 @@
 		}
 		.left{
 			left: 0;
-			background: url(images/p1.jpg);
+			background: url(/resources/images/p1.jpg);
 			background-position: top left;
 		}
 		.center {
 			right: 0;
 			transform-origin: left;
-			background: url(images/p1.jpg);
+			background: url(/resources/images/p1.jpg);
 			background-position: top right;
 		}
 		.right{
 			right: 0;
 			z-index: -1;
-			background: url(images/p2.jpg);
+			background: url(/resources/images/p2.jpg);
 			background-position: top right;
 		}
 	</style>
@@ -62,7 +62,7 @@
 			center.style.transform = `rotateY(${deg -= 5}deg)`
 			if (deg <= -90) {
 				deg = 90
-				center.style.background = `url(images/p${index}.jpg)`
+				center.style.background = `url(/resources/images/p${index}.jpg)`
 				center.style.right = '300px'
 				center.style.backgroundPosition = 'top left'
 				center.style.transformOrigin = 'right'
@@ -71,8 +71,8 @@
 				center.style.right = 0
 				center.style.backgroundPosition = 'top right'
 				center.style.transformOrigin = 'left'
-				left.style.background = `url(images/p${index}.jpg)`
-				right.style.background = `url(images/p${index % 2 + 1}.jpg) top right`
+				left.style.background = `url(/resources/images/p${index}.jpg)`
+				right.style.background = `url(/resources/images/p${index % 2 + 1}.jpg) top right`
 				return
 			}
 			requestAnimationFrame(setStyle)
