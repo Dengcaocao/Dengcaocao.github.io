@@ -10,100 +10,102 @@
  </head>
  <style>
 	*{
-		 margin:0;
-		 padding:0;
+		 margin: 0;
+		 padding: 0;
 	 }
 	body{
-		background:#000;
-		overflow:hidden;
+		background: #000;
+		overflow: hidden;
 	}
 	.out{
-	 	perspective:800px;/*景深*/
+		width: 100vw;
+		height: 100vh;
+	 	perspective: 800px;/*景深*/
 	}
 	#warp{
-		width:133px;
-		height:200px;
-		border:1px solid skyblue;
-		margin:150px auto;
-		transform-style:preserve-3d;/*3D视觉*/
-		transform:rotateX(-30deg) rotateY(0deg);
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		width: 100px;
+		height: 150px;
+		border: 1px solid skyblue;
+		margin: auto;
+		transform-style: preserve-3d;/*3D视觉*/
+		transform: rotateX(-30deg) rotateY(0deg);
 	}
-	#warp img{
-		position:absolute;
-		transition:2s;
+	#warp div{
+		position: absolute;
+		transition: 2s;
 		width: 100%;
 		height: 100%;
-		user-select: none;
+	}
+	#warp div:nth-child(odd) {
+		background-color: antiquewhite;
+	}
+	#warp div:nth-child(even) {
+		background-color: aquamarine;
 	}
  </style>
  <body>
  <div class="out">
 		<div id="warp">
-			<img src="images/QQ截图20180814094551.png"/>
-			<img src="images/QQ截图20180814094551.png"/>
-			<img src="images/QQ截图20180814094551.png"/>
-			<img src="images/QQ截图20180814094551.png"/>
-			<img src="images/QQ截图20180814094551.png"/>
-			<img src="images/QQ截图20180814094551.png"/>
-			<img src="images/QQ截图20180814094551.png"/>
-			<img src="images/QQ截图20180814094551.png"/>
-			<img src="images/QQ截图20180814094551.png"/>
-			<img src="images/QQ截图20180814094551.png"/>
-			<img src="images/QQ截图20180814094551.png"/>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
 	 </div>
  </div>
  <script>
-		var Oimg = document.getElementsByTagName('img'),
-	 	deg = 360 / Oimg.length;//每张图片旋转的度数
+		const nodeList = document.querySelectorAll('#warp div'),
+	 	deg = 360 / nodeList.length // 每张图片旋转的度数
 		//页面初次加载完执行
 		window.onload = function(){
-
-			for(var i = 0; i < Oimg.length; i++){//赋值
-				var time = Oimg.length - i;
-				Oimg[i].style.transform = "rotateY("+i*deg+"deg) translateZ(350px)";
-				Oimg[i].style.transitionDelay = time*0.1 + "s";
+			for(let i = 0; i < nodeList.length; i++){
+				const time = nodeList.length - i
+				nodeList[i].style.transform = `rotateY(${i * deg}deg) translateZ(350px)`
+				nodeList[i].style.transitionDelay = `${time * 0.1}s` // 延迟时间
 			}
 		}
 
 	//鼠标按下
 	document.onmousedown = function(e){
-		var x = -30, y = 0, timer, chaX, chaY;
-		var oldX = e.clientX,
-		    oldY = e.clientY;
+		let timer, chaX, chaY
+		let oldX = e.clientX,
+		    oldY = e.clientY
 			//鼠标移动
 		this.onmousemove = function(e){
-			var newX = e.clientX,
-			    newY = e.clientY;
+			let newX = e.clientX,
+			    newY = e.clientY
 
-			chaX = newX - oldX,//两次鼠标移动的差值
-			chaY = newY - oldY;
+			chaX = newX - oldX, // 两次鼠标移动的差值
+			chaY = newY - oldY
 
-			// x += chaY*0.2,
-			// y += chaX*0.2;
-
-			warp.style.transform = "rotateY("+chaX+"deg) rotateX("+chaY+"deg)";
-
-			// oldX = newX;//新值用完等于旧值
-			// oldY = newY;
+			warp.style.transform = `rotateY(${chaX}deg) rotateX(${chaY}deg)`
 		}
 		//鼠标松开
 		this.onmouseup = function(){
-			this.onmousemove = null;//清空时间
+			this.onmousemove = null // 清空时间
 				
 			//鼠标松开后，不移动
 			timer = setInterval(function(){
-				chaX *= 0.95;
-				chaY *= 0.95;//差值乘以小于1 的数 会越来越小
+				chaX *= 0.95
+				chaY *= 0.95 // 差值乘以小于1 的数 会越来越小
 
-				// x -= chaY*0.2,
-				// y += chaX*0.2;
-
-				warp.style.transform = "rotateX("+chaX+"deg) rotateY("+chaY+"deg)";
+				warp.style.transform = `rotateX(${chaX}deg) rotateY(${chaY}deg)`
 
 				if(Math.abs(chaX) < 0.1 && Math.abs(chaY) < 0.1){
-					clearInterval(timer);//清除
+					clearInterval(timer) // 清除
 				}
-			},13)//定时器
+			}, 13) // 定时器
 		}
 	}
  </script>
