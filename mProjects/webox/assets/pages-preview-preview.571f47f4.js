@@ -1,0 +1,1 @@
+import{d as s,k as a,a as r,g as e,A as n}from"./index-e3952f36.js";import{o}from"./uni-app.es.57ddb3cb.js";const t=s({__name:"preview",setup(s){const t=a("");return o((s=>{t.value=null==s?void 0:s.url})),(s,a)=>{const o=n;return r(),e(o,{src:t.value},null,8,["src"])}}});export{t as default};
