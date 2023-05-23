@@ -67,6 +67,17 @@
       "name": "javaScript动画",
       "data": [
         {
+          "created_at": "2023-05-23 12:28:09",
+          "title": "canvas 粒子运动",
+          "description": "canvas 粒子运动",
+          "pic": "https://dengcaocao.github.io/resources/images/canvas_lizi.png",
+          "type": "6a125eb0-3ec5-4bc9-b2b1-cea4d97eac20",
+          "link": "https://dengcaocao.github.io/demo/粒子运动2.html",
+          "status": "online",
+          "uuid": "7ee70eb9-462c-471e-be7d-46d64f802ccb",
+          "content": "<p>使用canvas实现的一个粒子运动效果</p>"
+        },
+        {
           "created_at": "2023-05-16 14:49:52",
           "link": "https://dengcaocao.github.io/demo/JS/",
           "title": "小心心",
