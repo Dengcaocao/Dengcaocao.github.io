@@ -6,6 +6,17 @@
       "name": "Css动画",
       "data": [
         {
+          "created_at": "2023-05-24 16:03:46",
+          "title": "吃豆人",
+          "description": "动画+阴影实现",
+          "pic": "https://dengcaocao.github.io/resources/images/企业微信截图_0f432a2a-4d1d-4d3c-87c8-870f2601f2a8.png",
+          "type": "3e5b47f5-dc69-44ad-8277-8d7690691ef6",
+          "link": "https://dengcaocao.github.io/demo/吃豆人.html",
+          "status": "online",
+          "uuid": "27785627-301e-451d-bc16-f0527d10641f",
+          "content": "<p>其实这个是很简单的，只需要一个div盒子结合Css动画和阴影就可以实现。这里只包含部分css代码，其他css代码自己补充。</p><pre><code class=\"language-html\">&lt;div&gt;&lt;/div&gt;</code></pre><p>为div创建两个伪元素，扮演吃豆人的嘴。</p><pre><code class=\"language-css\">.warp:before{\n\tposition:absolute;\n\ttop:0;\n\tcontent:\"\";\n\twidth:200px;\n\theight:100px;\n\tborder-radius:100px 100px 0 0;\n\ttransform:rotate(-30deg);\n\tbackground:#ffff00;\n\tmargin-left:80px;\n\tanimation:moveTop 1s infinite;\n}\n.warp:after{\n\tposition:absolute;\n\tbottom:0;\n\tcontent:\"\";\n\twidth:200px;\n\theight:100px;\n\tborder-radius:0 0 100px 100px;\n\ttransform:rotate(30deg);\n\tbackground:#ffff00;\n\tmargin-left:80px;\n\tanimation:moveBottom 1s infinite;\n}</code></pre><p>分别为其创建一个动画，让嘴可以开合。</p><pre><code class=\"language-css\">@keyframes moveTop{\n\tfrom{\n\t\ttransform:rotate(-30deg);\n\t}\n\tto{\n\t\ttransform:rotate(0deg);\n\t}\n}\n@keyframes moveBottom{\n\tfrom{\n\t\ttransform:rotate(30deg);\n\t}\n\tto{\n\t\ttransform:rotate(0deg);\n\t}\n}</code></pre><p>剩下就是豆豆了，很多人不知道一个div怎么去画豆豆，其实阴影是可以有多个的，不知道的白去百度吧😁。接下来为div创建多个阴影。</p><p><br></p><pre><code class=\"language-css\">box-shadow:300px 0px 0px -70px #00cc00,\n\t\t   500px 0px 0px -70px #00cc00,\n\t\t   700px 0px 0px -70px #00cc00,\n\t\t   900px 0px 0px -70px #00cc00;</code></pre><p>创建一个动画让豆豆动起来</p><pre><code class=\"language-css\">@keyframes moveDD{\n\tfrom{\n\t\tbox-shadow:300px 0px 0px -70px #00cc00,\n\t\t\t\t   500px 0px 0px -70px #00cc00,\n\t\t\t\t   700px 0px 0px -70px #00cc00,\n\t\t\t\t   900px 0px 0px -70px #00cc00;\n\t}\n\tto{\n\t\tbox-shadow:100px 0px 0px -70px #00cc00,\n\t\t\t\t   300px 0px 0px -70px #00cc00,\n\t\t\t\t   500px 0px 0px -70px #00cc00,\n\t\t\t\t   700px 0px 0px -70px #00cc00;\n\t}\n}</code></pre><p><br></p>"
+        },
+        {
           "created_at": "2023-05-23 22:29:29",
           "title": "加载动画",
           "description": "动画结合transform，指定动画执行延迟时间",
@@ -99,6 +110,17 @@
       "uuid": "6a125eb0-3ec5-4bc9-b2b1-cea4d97eac20",
       "name": "javaScript动画",
       "data": [
+        {
+          "created_at": "2023-05-24 16:07:23",
+          "title": "鼠标跟随",
+          "description": "canvas绘制的一个鼠标跟随特效",
+          "pic": "https://dengcaocao.github.io/resources/images/企业微信截图_789940d1-c120-46ca-a842-68462bb0770c.png",
+          "type": "6a125eb0-3ec5-4bc9-b2b1-cea4d97eac20",
+          "link": "https://dengcaocao.github.io/demo/鼠标跟随.html",
+          "status": "online",
+          "uuid": "33990244-c6e7-4fd4-8e10-cc36c546acd9",
+          "content": "<p>HTML结构</p><pre><code class=\"language-html\">&lt;canvas id=\"canvas\"&gt;&lt;/canvas&gt;</code></pre><p>定义一个init函数，当屏幕发生变化时重新获取屏幕的宽高去设置canvas的宽高。在这之前需要获取到canvas节点，并创建画笔。</p><pre><code class=\"language-javascript\">const canvas = document.querySelector('#canvas')\nconst ctx = canvas.getContext('2d')\n \nconst init = () =&gt; {\n    canvas.width = window.innerWidth\n    canvas.height = window.innerHeight\n}</code></pre><p>以上准备好后就可以监听鼠标移动事件了。需要定义一个数组来记录鼠标的位置和其他信息。</p><ul><li>dx、dy每次偏移值</li><li>random 随机颜色</li></ul><pre><code class=\"language-javascript\">const random = () =&gt; {\n    return '#' + Math.random().toString(16).slice(-6)\n}</code></pre><pre><code class=\"language-javascript\">const data = []\n\ndoucument.addEventListener('onmousemove', e =&gt; {\n    data.push({\n        left: e.clientX,\n        top: e.clientY,\n        opacity: 1,\n        color: randomColor(),\n        dx: (Math.random()-0.5)*2.5,\n        dy: (Math.random()-0.5)*2.5\n    })\n})</code></pre><p>现在数据有了就可以开始绘制了。定义一个draw绘制函数，每次绘制之前需要清空画布，不然之前绘制的会一直存在。结束当前数据的绘制并删除数据（条件应该是透明度趋近于0，自己确定），否则left、top的值每次累加dx/dy，透明度慢慢变小（一直乘以一个小数，最后值会无限趋近于0）。逻辑清楚了那就开始吧，不懂的方法自行百度。</p><pre><code class=\"language-javascript\">const draw = () =&gt; {\n    ctx.clearRect(0, 0, canvas.width, canvas.height)\n    for (let i = 0; i &lt; data.length; i++) {\n        if (data[i].opacity &lt; 0.05) return data.splice(i, 1)\n        data[i].left += data[i].dx\n        data[i].top += data[i].dy\n        data[i].opacity *= 0.98\n        cxt.beginPath()\n        ctx.fillStyle = data[i].color\n        ctx.globalAlpha = data[i].opacity\n        ctx.arc(data[i].x, data[i].y, 45, 0, Math.PI*2, true)\n        ctx.closePath()\n        ctx.fill()\n    }\n    requestAnimationFrame(draw)\n}</code></pre><p><br></p>"
+        },
         {
           "created_at": "2023-05-23 23:25:07",
           "pic": "https://dengcaocao.github.io/resources/images/QQ截图20230523231716.png",
