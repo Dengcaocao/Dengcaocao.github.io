@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>spin</title>
+  <style>
+    .spin {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      /* 14 20 32 */
+      font-size: 32px;
+      width: 1em;
+      height: 1em;
+      animation: rotateMove 1.2s infinite linear;
+    }
+    .spin-item {
+      position: absolute;
+      /* 6 9 14 */
+      width: 0.45em;
+      height: 0.45em;
+      border-radius: 50%;
+      transform: scale(0.75);
+      opacity: 0.3;
+      background-color: #1677ff;
+      animation: opacityMove 1s infinite linear alternate;
+    }
+    .spin-item:nth-child(1) {
+      top: 0;
+      left: 0;
+    }
+    .spin-item:nth-child(2) {
+      top: 0;
+      right: 0;
+      animation-delay: 0.4s;
+    }
+    .spin-item:nth-child(3) {
+      left: 0;
+      bottom: 0;
+      animation-delay: 0.8s;
+    }
+    .spin-item:nth-child(4) {
+      right: 0;
+      bottom: 0;
+      animation-delay: 1.2s;
+    }
+    @keyframes rotateMove {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    @keyframes opacityMove {
+      100% {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="root">
+    <div class="spin">
+      <div class="spin-item"></div>
+      <div class="spin-item"></div>
+      <div class="spin-item"></div>
+      <div class="spin-item"></div>
+    </div>
+    <div class="size">
+      size:
+      <select class="selectEl">
+        <option value="14">小</option>
+        <option value="20">中</option>
+        <option value="32" selected>大</option>
+      </select>
+    </div>
+  </div>
+  <script>
+    const el = document.querySelector('.spin')
+    const selectEl = document.querySelector('.selectEl')
+    selectEl.onchange = e => {
+      el.style.fontSize = `${e.target.value}px`
+    }
+  </script>
+</body>
+</html>
