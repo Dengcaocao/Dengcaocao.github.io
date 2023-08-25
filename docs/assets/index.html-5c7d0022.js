@@ -1,1 +1,0 @@
-const e=JSON.parse('{"key":"v-11d459a6","path":"/note/Webpack/","title":"Webpack","lang":"zh-CN","frontmatter":{"title":"Webpack","article":false,"feed":false,"sitemap":false,"seo":false,"head":[]},"headers":[],"git":{},"readingTime":{"minutes":0.03,"words":10},"filePathRelative":null,"excerpt":""}');export{e as data};
